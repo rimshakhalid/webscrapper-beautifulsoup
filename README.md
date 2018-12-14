@@ -119,26 +119,36 @@ You can see the div with that class in below image
 To find the **category** we have div
 ![alt text](screenshots/category.PNG "Search List")
 
->	row["type"] = ""
->	category = li.find('div', {'class':'priceCategory__373c0__3zW0R'})
->	if category:
->	    row["type"] = category.text.replace("\n", " ").replace("$", "").strip()
+>		row["type"] = ""
+
+>		category = li.find('div', {'class':'priceCategory__373c0__3zW0R'})
+
+>		if category:
+
+>		    row["type"] = category.text.replace("\n", " ").replace("$", "").strip()
 
 Getting **reviews** is same by inspecting on element
 ![alt text](screenshots/reviews.PNG "Search List")
 
 >	row["review"] = ""
+
 >	review = li.find('span' , {'class' : 'reviewCount__373c0__2r4xT'})
+
 >	if review:
+
 >	    row["review"] = review.text.replace("\n", "").strip()
 
  Getting **stars** is same by inspecting on element
 ![alt text](screenshots/stars.PNG "Search List")
 
 >	row["stars"] = ""
+
 >	stars = li.find('div' , {'class' : 'i-stars__373c0__Y2F3O'})
+
 >	if stars:
+
 >	    row["stars"] = stars['aria-label'].replace("\n", "").strip()
 
+## Result
 Once everything is extracted final excel file will looks like
 ![alt text](screenshots/output.PNG "Search List")
