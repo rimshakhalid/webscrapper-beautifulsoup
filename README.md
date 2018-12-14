@@ -34,7 +34,7 @@ You can install using any tutorial on your pc. If you are using mac you don’t 
 ## Explanation
 Time to learn parsing so you can update dom element when Yelp make changes on their site.
 
-### [Search Page](https://rimshakhalid.github.io/webscrapper-beautifulsoup//yelp_listing.html)
+### [Search Page](https://rimshakhalid.github.io/webscrapper-beautifulsoup/yelp_listing.html)
 ![alt text](screenshots/listing.PNG "Search List")
 
 From this search results we want to extract restaurant name, reviews, phone number, address, category as highlighted below
