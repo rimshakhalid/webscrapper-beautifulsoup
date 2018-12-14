@@ -61,27 +61,27 @@ You will see following thing
 
 there are <li> tag with class 'domtags--li__373c0__3TKyB list-item__373c0__M7vhU' so we are getting all the list tags using **find_all**
  
-> listings = soup.find_all('li' , {'class' : 'domtags--li__373c0__3TKyB list-item__373c0__M7vhU'})
+>	listings = soup.find_all('li' , {'class' : 'domtags--li__373c0__3TKyB list-item__373c0__M7vhU'})
 
 Next is we are using for loop to iterate on each li element
-> for li in listings:
+>	for li in listings:
 
 In this li, first we will find the div which contains name of restaurant. 
 ![alt text](screenshots/name.PNG "Search List")
 
 
-> li_div = li.find('div', {'class':'businessName__373c0__1fTgn'})
+>	li_div = li.find('div', {'class':'businessName__373c0__1fTgn'})
 
 We have some Ad with search results that we want to ignore and don't want in out data so for that we are using if condition and checking whether there is a <p> tag within name div if yes then ignore that <li> tag.
 
-> if li_div and not li_div.find('p'):
+>	if li_div and not li_div.find('p'):
 
 We know that **name** is in <a> tag so we are finding that
->	row["name"] = ""
+>		row["name"] = ""
 	
->	if li_div.find('a'):
+>		if li_div.find('a'):
 
->       row["name"] = li_div.find('a').text
+>       		row["name"] = li_div.find('a').text
 
 There are 2 different tags used for **address**
 1:
@@ -91,27 +91,27 @@ There are 2 different tags used for **address**
 ![alt text](screenshots/address.PNG "Search List")
 
 so we are using
->	row["address"] = ""
+>		row["address"] = ""
 
->	address = li.find('div', {'class':'domtags--div__373c0__3B6ae'})
+>		address = li.find('div', {'class':'domtags--div__373c0__3B6ae'})
 
->	if address:
+>		if address:
 
->	    row["address"] = address.text.replace("\n", " ").strip()
+>	    		row["address"] = address.text.replace("\n", " ").strip()
 
->	elif li.find('address'):
+>		elif li.find('address'):
 
->		row["address"] = li.find("address").text.replace("\n", " ").strip()
+>			row["address"] = li.find("address").text.replace("\n", " ").strip()
 
 
 **Phone** number is extracted using
->	row["phone"] = ""
+>		row["phone"] = ""
 
->	phone = li.find('div', {'class':'lemon--div__373c0__6Tkil display--inline-block__373c0__2de_K border-color--default__373c0__2oFDT'})
+>		phone = li.find('div', {'class':'lemon--div__373c0__6Tkil display--inline-block__373c0__2de_K border-color--default__373c0__2oFDT'})
 
->	if phone:
+>		if phone:
 
->	    row["phone"] = phone.text.replace("\n", " ").strip()
+>	   		row["phone"] = phone.text.replace("\n", " ").strip()
 
 You can see the div with that class in below image
 ![alt text](screenshots/phone.PNG "Search List")
@@ -130,24 +130,24 @@ To find the **category** we have div
 Getting **reviews** is same by inspecting on element
 ![alt text](screenshots/reviews.PNG "Search List")
 
->	row["review"] = ""
+>		row["review"] = ""
 
->	review = li.find('span' , {'class' : 'reviewCount__373c0__2r4xT'})
+>		review = li.find('span' , {'class' : 'reviewCount__373c0__2r4xT'})
 
->	if review:
+>		if review:
 
->	    row["review"] = review.text.replace("\n", "").strip()
+>	    		row["review"] = review.text.replace("\n", "").strip()
 
  Getting **stars** is same by inspecting on element
 ![alt text](screenshots/stars.PNG "Search List")
 
->	row["stars"] = ""
+>		row["stars"] = ""
 
->	stars = li.find('div' , {'class' : 'i-stars__373c0__Y2F3O'})
+>		stars = li.find('div' , {'class' : 'i-stars__373c0__Y2F3O'})
 
->	if stars:
+>		if stars:
 
->	    row["stars"] = stars['aria-label'].replace("\n", "").strip()
+>	    		row["stars"] = stars['aria-label'].replace("\n", "").strip()
 
 ## Result
 Once everything is extracted final excel file will looks like
